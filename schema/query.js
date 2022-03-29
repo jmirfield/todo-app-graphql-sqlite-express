@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLList, GraphQLInt } = require('graphql')
 const { UserType } = require('./types')
-const { resolveUsers, resolveUser } = require('./resolver')
+const { resolveUsers, resolveUser } = require('./resolvers')
 
 const Query = new GraphQLObjectType({
     name: 'RootQueryType',
