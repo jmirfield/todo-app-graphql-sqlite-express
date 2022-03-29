@@ -1,4 +1,4 @@
-const db = require('../database/db.js')
+const db = require('../database/index.js')
 
 const resolveUsers = () => {
     return new Promise((resolve, reject) => {
@@ -11,7 +11,7 @@ const resolveUsers = () => {
 
 const resolveUser = (source, args) => {
     return new Promise((resolve, reject) => {
-        db.get(`SELECT *, rowid AS id FROM users WHERE rowid = ${args.id}`, (err, rows) => {
+        db.get(`SELECT first_name, age, rowid AS id FROM users WHERE rowid = ${args.id}`, (err, rows) => {
             if (err) reject([])
             resolve(rows)
         })

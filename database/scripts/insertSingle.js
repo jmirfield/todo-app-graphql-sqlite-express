@@ -1,4 +1,4 @@
-const db = require('./db.js')
+const db = require('../index.js')
 
 const [, , firstName, age] = process.argv
 
@@ -12,7 +12,5 @@ try {
 } catch (e) {
     console.log(e.message)
 }
-
-
 
 db.close()
