@@ -7,17 +7,17 @@ const Query = new GraphQLObjectType({
     fields: {
         Users: {
             type: GraphQLList(UserType),
-            resolve: resolveUsers
+            resolve: () => resolveUsers()
         },
         User: {
             type: UserType,
             args: { id: { type: GraphQLInt } },
-            resolve: resolveUser
+            resolve: (root, args) => resolveUser(args.id)
         },
         Posts: {
             type: GraphQLList(PostType),
             args: { id: { type: GraphQLInt } },
-            resolve: resolvePosts
+            resolve: (root, args) => resolvePosts(args.id)
         }
     }
 })

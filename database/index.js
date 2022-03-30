@@ -7,7 +7,11 @@ const connectionURL = path.join(__dirname, 'database.db')
 const db = new sqlite3.Database(connectionURL, function (err) {
     if (err) console.log(err)
     this.run("PRAGMA foreign_keys = ON");
-    createTables(this)
+    initialize(this)
 });
+
+const initialize = (db) => {
+    createTables(db)
+}
 
 module.exports = db
