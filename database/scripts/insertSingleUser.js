@@ -7,7 +7,7 @@ try {
     if (!age) throw new Error('age must not be NULL')
     db.run('INSERT INTO users(first_name, age) VALUES(?, ?)', [firstName, Number.parseInt(age)], function (err) {
         if (err) throw new Error(err.message)
-        console.log('DB updated with rowid: ' + this.lastID)
+        console.log('DB updated with id: ' + this.lastID)
     })
 } catch (e) {
     console.log(e.message)
