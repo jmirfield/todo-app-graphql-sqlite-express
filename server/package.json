@@ -1,5 +1,5 @@
 {
-  "name": "graphql",
+  "name": "todo-app-graphql-sqlite-express",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,6 @@
     "express": "^4.17.3",
     "express-graphql": "^0.12.0",
     "graphql": "^15.8.0",
-    "lodash": "^4.17.21",
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
