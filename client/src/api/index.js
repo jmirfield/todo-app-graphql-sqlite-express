@@ -16,5 +16,25 @@ export const getTodoList = async (setList) => {
         `
     })
     const { data } = response.data
-    setList(data.Todos)
+    setList({ original: data.Todos })
+}
+
+export const markTodoItem = async (id, status, setList) => {
+    const response = await API.post('', {
+        query: `
+            mutation {
+                markTodo(id: ${id}, complete: ${!status}){
+                    id
+                }
+            }
+        `
+    })
+    const { data } = response.data
+    setList(prev => ({
+        ...prev,
+        original: prev.original.map(todo => {
+            if (todo.id === data.markTodo.id) return { ...todo, complete: !todo.complete}
+            return todo
+        })
+    }))
 }

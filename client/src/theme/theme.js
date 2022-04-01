@@ -6,7 +6,8 @@ const theme = createTheme({
         primary: { 
             main: '#42A5F5',
             lighter: '#85C5F8',
-            darker: '#205077'
+            darker: '#205077',
+            contrastText: '#fff'
         },
         secondary: {
             main: '#EADD99',
@@ -21,11 +22,15 @@ const theme = createTheme({
             laptop: 1024,
             desktop: 1200,
         }
+    },
+    typography: {
+        h1: {
+            fontSize: '24px',
+            fontWeight: '600'
+        }
     }
 })
 
 theme.components = ComponentsOverrides(theme)
-
-console.log(theme)
 
 export default theme

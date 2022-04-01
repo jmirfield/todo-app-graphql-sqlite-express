@@ -4,8 +4,10 @@ const Toolbar = (theme) => ({
             root: {
                 backgroundColor: theme.palette.primary.main,
                 justifyContent: 'space-between',
-                borderTopLeftRadius: 'inherit',
-                borderTopRightRadius: 'inherit',
+                [theme.breakpoints.up('tablet')]: {
+                    borderTopLeftRadius: 'inherit',
+                    borderTopRightRadius: 'inherit',
+                },
             }
         }
     },
