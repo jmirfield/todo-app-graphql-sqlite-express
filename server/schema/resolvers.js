@@ -4,7 +4,8 @@ const getTodos = () => {
     return new Promise((resolve, reject) => {
         const sql = `
             SELECT *
-            FROM todos 
+            FROM todos
+            ORDER BY id DESC
         `
         db.all(sql, (err, rows) => {
             if (err) reject({})
