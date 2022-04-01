@@ -26,6 +26,7 @@ const TodoSort = ({ sort, onSort }) => {
                     vertical: 'top',
                     horizontal: 'right',
                 }}
+                sx={{minHeight: 1}}
             >
                 <MenuList sx={{ p: 0 }}>
                     <MenuItem sx={{ backgroundColor: sort === 'DESC' && 'action.focus' }} onClick={onSort.bind(this, 'DESC')}>

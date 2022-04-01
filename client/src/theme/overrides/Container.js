@@ -11,7 +11,8 @@ const Container = (theme) => ({
                     padding: 0
                 },
                 backgroundColor: theme.palette.secondary.lighter,
-                height: '100vh'
+                minHeight: '100vh',
+                height: '100%'
             }
         },
         defaultProps: {

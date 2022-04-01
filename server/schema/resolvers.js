@@ -59,7 +59,7 @@ const deleteTodo = (id) => {
         `
         db.run(sql, [id], function (err) {
             if (err) reject(err)
-            resolve(this.lastID)
+            resolve(id)
         })
     })
 }

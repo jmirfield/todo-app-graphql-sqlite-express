@@ -14,7 +14,7 @@ const TodoHeader = ({ tab, onChange, onAdd }) => {
                 <Tab label="complete" />
             </Tabs>
             <IconButton onClick={onAdd}>
-                <SvgIcon component={BiMessageSquareAdd} />
+                <SvgIcon component={BiMessageSquareAdd} sx={{ color: 'white' }} />
             </IconButton>
         </Toolbar>
     );
