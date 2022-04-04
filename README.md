@@ -5,6 +5,10 @@ This is a Todo app to practice GraphQL and Sqlite.
 
 <img src="https://github.com/jmirfield/todo-app-graphql-sqlite-express/blob/main/demo/main_demo.PNG" alt="Main Demo" width="800">
 
+<img src="https://github.com/jmirfield/todo-app-graphql-sqlite-express/blob/main/demo/new_demo.PNG" alt="New Todo Demo" width="800">
+
+<img src="https://github.com/jmirfield/todo-app-graphql-sqlite-express/blob/main/demo/edit_demo.PNG" alt="Edit Todo Demo" width="800">
+
 ## Setup
 Get the code by either cloning this repository using git
 ```
