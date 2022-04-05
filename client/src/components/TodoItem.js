@@ -1,36 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { ListItem, ListItemButton, Checkbox, Typography, Box, SvgIcon, IconButton, TextField, Button } from '@mui/material';
-import { markTodoItem, deleteTodoItem, editTodoItem } from '../api';
 import { BiXCircle } from 'react-icons/bi'
+import useTodoItem from '../hooks/useTodoItem';
 
 const TodoItem = ({ todo, onChange }) => {
-    const ref = useRef(null)
+    const [ref, state, actions] = useTodoItem(todo, onChange)
 
-    const [isHover, setIsHover] = useState(false)
-    const [isEdit, setIsEdit] = useState(false)
-    const [value, setValue] = useState(todo.todo)
+    const {
+        isHover,
+        isEdit,
+        value
+    } = state
 
-    const handleCheck = () => markTodoItem(todo.id, todo.complete, onChange)
-    const handleDelete = () => deleteTodoItem(todo.id, onChange)
-    const handleChange = (e) => setValue(e.target.value)
-    const handleHoverOver = () => setIsHover(true)
-    const handleHoverOff = () => setIsHover(false)
-    const handleEdit = () => setIsEdit(true)
-    const handleEditSubmit = () => {
-        setIsEdit(false)
-        if (value.trim() !== todo.todo && value.trim().length > 0) editTodoItem(todo.id, value, onChange)
-        else { setValue(todo.todo) }
-    }
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (!ref?.current?.contains(event.target)) {
-                setIsEdit(false);
-            }
-        };
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => document.removeEventListener("mousedown", handleClickOutside)
-    }, [ref])
+    const {
+        handleCheck,
+        handleDelete,
+        handleChange,
+        handleHoverOff,
+        handleHoverOver,
+        handleEdit,
+        handleEditSubmit
+    } = actions
 
     return (
         <ListItem divider ref={ref}
@@ -44,10 +34,15 @@ const TodoItem = ({ todo, onChange }) => {
             <Box sx={{ flexGrow: 1, display: 'flex' }}>
                 <Checkbox checked={todo.complete} onChange={handleCheck} />
                 {!isEdit
-                    ? <ListItemButton onClick={handleEdit}>
-                        <Typography>
+                    ? <ListItemButton sx={{ height: (theme) => theme.spacing(6) }}>
+                        <Typography onClick={handleEdit}>
                             {todo.todo}
                         </Typography>
+                        {isHover &&
+                            <IconButton disableRipple onClick={handleDelete}>
+                                <SvgIcon component={BiXCircle} sx={{ marginRight: 1 }} />
+                            </IconButton>
+                        }
                     </ListItemButton>
                     : <TextField
                         sx={{
@@ -67,11 +62,6 @@ const TodoItem = ({ todo, onChange }) => {
                     />
                 }
             </Box>
-            {isHover &&
-                <IconButton disableRipple onClick={handleDelete}>
-                    <SvgIcon component={BiXCircle} sx={{ marginRight: 1 }} />
-                </IconButton>
-            }
         </ListItem >
     );
 }
