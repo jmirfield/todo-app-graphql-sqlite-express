@@ -32,10 +32,7 @@ export const markTodoItem = async (id, status, setList) => {
     const { data } = response.data
     setList(prev => ({
         ...prev,
-        original: prev.original.map(todo => {
-            if (todo.id === data.markTodo.id) return { ...todo, complete: !todo.complete }
-            return todo
-        })
+        original: prev.original.map(todo => todo.id === data.markTodo.id ? { ...todo, complete: !todo.complete } : todo)
     }))
 }
 
